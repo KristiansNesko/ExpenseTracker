@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Page</title>
+     <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+     <script src="{{url_for('static',filename='script.js')}}"></script>
+</head>
+<body>
+     <div class="container">
+        <div class="welcome-message">
+            <h2 class="text-success">Welcome : {{session["name"]}}</h3>
+            <hr>
+            <a href="{{url_for('logout')}}" class="btn btn-primary btn-block">Logout</a>
+        </div>
+     </div>
+     <div class="header">
+        <h1>Expense Tracker</h1>
+        <h2>Add a New Item:</h2>
+    </div>
+    <div class="input-area">
+        <div class="input-row">
+            <label for="name" class="label">Name:</label>
+            <input type="text" class="text-area" placeholder="Where was the expense made?" id="name">
+        </div>
+        
+        <div class="input-row">
+            <label for="date" class="label">Date:</label>
+            <input type="date" class="date-area" id="date">
+        </div>
+
+        <div class="input-row">
+            <label for="price" class="label">Price:</label>
+            <input type="text" class="price-area" id="price">
+        </div>
+        <div class="button">
+            <button id="add-btn" onclick="addExpense()">Add Expense</button>
+            <!-- <button id="add-btn" onclick="calculateTotal()">Calculate Total</button> -->
+            <div id="total"></div>
+        </div>  
+    </div>
+    <div class="dateContainer">
+        <label for="monthSelect">Select Month: </label>
+        <select id="monthSelect" style="margin-left: 10px;" onchange="handleMonthChange(this.value)">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+    </div>
+    <div class="container" id="tableContainer">
+        <table bgcolor="f2f2f2" id="table">
+            <tr bgcolor="white">
+                <th>Name</th>
+                <th>Date</th>
+                <th>Amount</th>
+            </tr>
+            <tr bgcolor="lightgrey">
+                <!-- <td></td>
+                <td></td>
+                <td></td>  -->
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
